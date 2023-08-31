@@ -1,10 +1,10 @@
-import { Header, TestSlider } from "@/components";
+import { TestSlider, Topten } from "@/components";
 
 export default function Home() {
   return (
     <>
-      <Header />
       <TestSlider />
+      <Topten />
     </>
   );
 }

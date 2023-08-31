@@ -18,17 +18,19 @@ export const TestSlider = () => {
     autoplaySpeed: 5000,
   };
   return (
-    <div>
-      <h2> Single Item</h2>
+    <div style={{ marginTop: "20px" }}>
       <Slider className={styles.customSlider} {...settings}>
         <div className={styles.customSlide}>
           <Image src={"/image-0.jpg"} alt="image" width={1200} height={370} />
+          <button className={styles.sliderButton}>Смотреть бесплатно</button>
         </div>
         <div className={styles.customSlide}>
           <Image src={"/image-1.jpg"} alt="image" width={1200} height={370} />
+          <button className={styles.sliderButton}>Смотреть бесплатно</button>
         </div>
         <div className={styles.customSlide}>
           <Image src={"/image-2.jpg"} alt="image" width={1200} height={370} />
+          <button className={styles.sliderButton}>Смотреть бесплатно</button>
         </div>
       </Slider>
     </div>

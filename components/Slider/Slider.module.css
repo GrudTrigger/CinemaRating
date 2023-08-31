@@ -1,42 +1,28 @@
 .customSlider {
-    margin: 0 auto;
+    margin: 15px auto;
     overflow: hidden;
     position: relative;
     z-index: 1;
 }
 
 .customSlide {
-    margin-right: 20px;
+    margin-right: 24px;
 }
 
-.slick-arrow {
-    background-color: #eaeaea;
-    border: none;
-    border-radius: 50%;
+.sliderButton {
+    position: absolute;
+    bottom: 50px;
+    width: 201px;
+    height:40px;
+    border-radius: 8px;
+    border-width: 1px;
+    padding: 3px 6px;
+    background-color: #ea003d;
     color: white;
     cursor: pointer;
-    font-size: 18px;
-    height: 40px;
-    width: 40px;
-    line-height: 36px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    opacity: 0.8;
-    transition: background-color 0.3s, opacity 0.3s;
+    font-size: 15px;
+    font-weight: 500;
 }
-
-.slick-arrow:hover {
-    background-color: #333;
-    opacity: 1;
+.sliderButton:hover {
+    background-color: #ce053a;
 }
-
-.slick-prev {
-    left: 15px; /* Позиционируйте кнопку "назад" как вам нужно */
-}
-
-.slick-next {
-    right: 10px; /* Позиционируйте кнопку "вперед" как вам нужно */
-}
-

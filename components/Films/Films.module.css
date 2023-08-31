@@ -1,0 +1,29 @@
+.container {
+    width: 1240px;
+    margin: 24px auto 0;
+}
+
+.wrapperFilms{
+
+}
+
+.film {
+    width: 153px;
+    height: 279px;
+}
+
+.linkFilm{
+    text-decoration: none;
+}
+
+.filmImage{
+    border-radius: 7px;
+}
+
+.filmTitle{
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #c1bfc8;
+}

@@ -14,3 +14,9 @@ body {
 img:focus {
   outline: none;
 }
+.slick-list{
+  height: 420px;
+}
+.slick-track {
+  height: 415px;
+}

@@ -7,7 +7,7 @@ export const Header = () => {
   return (
     <header>
       <div className={styles.container}>
-        <div className={styles.navMenu}>
+        <nav className={styles.navMenu}>
           <div>
             <Image src={"/logo.png"} alt={"logo"} width={55} height={55} />
           </div>
@@ -18,7 +18,7 @@ export const Header = () => {
               </Link>
             </li>
             <li className={styles.liItem}>
-              <Link className={styles.link} href={"/"}>
+              <Link className={styles.link} href={"/films"}>
                 Фильмы
               </Link>
             </li>
@@ -33,7 +33,7 @@ export const Header = () => {
               </Link>
             </li>
           </ul>
-        </div>
+        </nav>
         <div className={styles.wrapperSerch}>
           <input className={styles.input} type="text" placeholder="Поиск..." />
           <div className={styles.wrapperButtons}>

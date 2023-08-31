@@ -1,0 +1,58 @@
+.container {
+    width: 1240px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.titleWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 263px;
+
+}
+
+.topDescr {
+    margin-left: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.wrapperItems {
+    width: 224px;
+    position: relative;
+
+}
+
+.item{
+    margin-top: 15px;
+}
+
+.imageItem{
+    border-radius: 5px;
+}
+
+.wrapperDescr{
+    position: absolute;
+    bottom: 50px;
+    left: 95px;
+}
+
+.itemTitle{
+    font-size: 28px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+}
+
+.itemNumber{
+    font-size: 23px;
+    color: #fff;
+    font-weight:  700;
+    text-align: center;
+}
+
+.customSlider {
+    margin-top: 10px;
+}
