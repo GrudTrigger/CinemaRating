@@ -8,8 +8,18 @@
 }
 
 .film {
+    position: relative;
     width: 153px;
     height: 279px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.film:hover{
+    transform: translateY(-10px);
+}
+
+.film p:hover {
+    color: white;
 }
 
 .linkFilm{
@@ -19,6 +29,8 @@
 .filmImage{
     border-radius: 7px;
 }
+
+
 
 .filmTitle{
     margin-top: 5px;

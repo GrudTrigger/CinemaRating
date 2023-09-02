@@ -1,7 +1,8 @@
 import {Films, FilmsTitle, FilterFilms} from "@/components";
 
-export default function FilmsPage() {
-    const type = 'films'
+export default function SeriesPage() {
+    const type = 'series'
+
     return(
         <>
             <FilmsTitle type={type}/>

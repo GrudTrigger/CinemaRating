@@ -3,12 +3,16 @@
     overflow: hidden;
     position: relative;
     z-index: 1;
+    width: 100%;
 }
 
 .customSlide {
     margin-right: 24px;
 }
-
+.sliderImage {
+    background-size: cover;
+    background-position: center;
+}
 .sliderButton {
     position: absolute;
     bottom: 50px;

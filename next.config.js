@@ -3,6 +3,6 @@ const nextConfig = {};
 
 module.exports = {
   images: {
-    domains: ["image.tmdb.org"], // Добавьте все нужные домены
+    domains: ["image.tmdb.org","st.kp.yandex.net","imagetmdb.com"], // Добавьте все нужные домены
   },
 };

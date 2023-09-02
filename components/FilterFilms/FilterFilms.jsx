@@ -41,4 +41,4 @@ export const FilterFilms = () => {
     )
 }
 
-export default FilterFilms
+
