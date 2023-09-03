@@ -2,16 +2,23 @@ import styles from './Films.module.css';
 import Image from "next/image";
 import Link from "next/link";
 
-export const Films = () => {
+export const Films = ({films}) => {
+
+    const currentArrayFilms = films.docs;
+    console.log(currentArrayFilms);
     return (
         <div className={styles.container}>
             <div className={styles.wrapperFilms}>
-                <div className={styles.film}>
-                    <Link className={styles.linkFilm} href={'/'}>
-                        <Image className={styles.filmImage} src={'/Беспринципные.jpg'} alt='Беспринципные' width={153} height={235}/>
-                        <p className={styles.filmTitle}>Беспринципные</p>
-                    </Link>
-                </div>
+                {currentArrayFilms.map((film, index)=> {
+                    return (
+                        <div key={index} className={styles.film}>
+                            <Link className={styles.linkFilm} href={'/'}>
+                                <Image className={styles.filmImage} src={film.poster.url} alt={film.name} width={153} height={235}/>
+                                <p className={styles.filmTitle}>{film.name}</p>
+                            </Link>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )

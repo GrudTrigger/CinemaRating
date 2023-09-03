@@ -27,16 +27,22 @@
 
 .item{
     margin-top: 15px;
+    width: 300px; /* Ширина контейнера для изображения */
+    height: 500px; /* Высота контейнера для изображения */
+    overflow: hidden; /* Обрезать изображение, если оно больше контейнера */
+    border-radius: 5px;
 }
 
 .imageItem{
-    border-radius: 5px;
+    width: 100%; /* Чтобы изображение полностью занимало контейнер */
+    height: 100%; /* Чтобы изображение полностью занимало контейнер */
+    background-size: cover;
 }
 
 .wrapperDescr{
     position: absolute;
-    bottom: 50px;
-    left: 95px;
+    bottom: -15px;
+    left: 122px;
 }
 
 .itemTitle{

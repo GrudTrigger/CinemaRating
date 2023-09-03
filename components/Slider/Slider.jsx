@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import styles from "./Slider.module.css";
+import {ImageContainer} from "@/components/ImageContainer/ImageContainer";
 
 
 export const TestSlider = ({data}) => {
@@ -26,7 +27,7 @@ export const TestSlider = ({data}) => {
         {films.map((film) => {
           return (
               <div className={styles.customSlide} key={film.id}> {/* Важно добавить ключ (key) */}
-                <Image className={styles.sliderImage} src={film.poster.url} alt="image" width={1200} height={387} />
+                <ImageContainer image={film.poster.url} type={'mainSlider'}/>
                 <button className={styles.sliderButton}>Смотреть бесплатно</button>
               </div>
           );
