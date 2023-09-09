@@ -11,6 +11,7 @@ export const genres = [
     'Боевики',
     'Мелодрамы',
     'Детективы',
+    'Приключения'
 ];
 
 export const years = [

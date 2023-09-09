@@ -7,24 +7,23 @@ import Image from "next/image";
 
 export const FilterFilms = ({ handleYearSelect, handleResetButton}) => {
 
-
     return (
         <div className={styles.container}>
             <div className={styles.filterWrapper}>
-                <select className={styles.filterSelect} id="genreSelect" onChange={()=> handleYearSelect(event, 'genre')} defaultValue={'Жанры'}>
-                    <option value="" disabled={true}>Выберите жанр</option>
+                <select className={styles.filterSelect} id="genreSelect" onChange={(event)=> handleYearSelect(event, 'genre')} >
+                    <option value="" >Выберите жанр</option>
                     {genres.map((genre,index) => {
                         return <option key={index} value={genre}>{genre}</option>
                     })}
                 </select>
-                <select className={styles.filterSelect} id="yearsSelect" onChange={()=> handleYearSelect(event, 'years')}>
-                    <option value="" disabled={true}>Годы</option>
+                <select className={styles.filterSelect} id="yearsSelect" onChange={(event)=> handleYearSelect(event, 'years')} >
+                    <option value="" >Годы</option>
                     {years.map((year, index) => {
                         return <option key={index} value={year}>{year}</option>
                     })}
                 </select>
-                <select className={styles.filterSelect} id="ratingSelect" onChange={()=> handleYearSelect(event, 'ratings')}>
-                    <option value="" disabled={true}>Рейтинг</option>
+                <select className={styles.filterSelect} id="ratingSelect" onChange={(event)=> handleYearSelect(event, 'ratings')} >
+                    <option value="">Рейтинг</option>
                     {ratings.map((rating, index) =>{
                         return <option key={index} value={rating}>{rating}</option>
                     })}
