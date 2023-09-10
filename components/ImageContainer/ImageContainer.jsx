@@ -12,8 +12,8 @@ export const ImageContainer = ({image, type}) => {
 
     const mainSlider = {
         backgroundImage: `url(${image})`,
-        width: '1200px',
-        height: '500px',
+        width: '600px',
+        height: '600px',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
     }

@@ -1,0 +1,27 @@
+.container {
+    width: 1240px;
+    margin: 24px auto 0;
+}
+
+.wrapperFilm {
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleFilm{
+    font-size: 56px;
+    font-weight: 700;
+    color: white;
+    text-align: center
+}
+
+.paramsList{
+    display: flex;
+    justify-content: center;
+}
+
+.params{
+    margin-right: 10px;
+    font-weight: 600;
+    color: #a7a5a8;
+}

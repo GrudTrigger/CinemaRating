@@ -8,7 +8,7 @@ import {ImageContainer} from "@/components/ImageContainer/ImageContainer";
 import React from "react";
 
 
-export const Topten = ({topTenFilms}) => {
+export const Topten = ({topTenFilms, type}) => {
   const settings = {
     dots: false,
     infinite: false,
@@ -19,12 +19,12 @@ export const Topten = ({topTenFilms}) => {
   };
 
   const films = topTenFilms.docs;
-  console.log(films);
+
   return (
     <div className={styles.container}>
       <div className={styles.titleWrapper}>
         <Image src={"/top10.svg"} width={116} height={28} />
-        <div className={styles.topDescr}>за неделю</div>
+        <div className={styles.topDescr}>{type === 'films' ? 'фильмов' : 'сериалов'}</div>
       </div>
       <Slider {...settings}>
         {films.map((film, index) => {
@@ -33,7 +33,7 @@ export const Topten = ({topTenFilms}) => {
                 <div className={styles.item}>
                  <ImageContainer image={film.poster.url} type={'topTen'}/>
                   <div className={styles.wrapperDescr}>
-                    <Image src={`/number/number${index + 1}.svg`} width={48} height={66} />
+                    <Image src={`/number/number${index + 1}.svg`} width={48} height={66} alt={'numbers'}/>
                   </div>
                 </div>
               </div>
@@ -43,18 +43,3 @@ export const Topten = ({topTenFilms}) => {
     </div>
   );
 };
-
-// <div className={styles.wrapperItems}>
-//   <div className={styles.item}>
-//     <Image
-//         className={styles.imageItem}
-//         src={"/top.jpg"}
-//         alt="top"
-//         width={224}
-//         height={455}
-//     />
-//     <div className={styles.wrapperDescr}>
-//       <Image src="/number/number1.svg" width={48} height={66} />
-//     </div>
-//   </div>
-// </div>

@@ -5,3 +5,4 @@ export * from "./Footer/Footer";
 export * from "./FilmsTitle/FilmsTitle";
 export * from "./FilterFilms/FilterFilms";
 export * from "./Films/Films";
+export * from  "./InfoFilm/InfoFilm";
