@@ -1,11 +1,22 @@
 .container {
     width: 1240px;
-    margin: 24px auto 0;
+    margin: 50px auto 0;
 }
 
 .wrapperFilm {
     display: flex;
     justify-content: space-between;
+}
+
+.containerInfo{
+    margin-left: 30px;
+}
+
+.posterImage {
+    width: 719px;
+    height: 680px;
+    border-radius: 5px;
+    object-fit: fill;
 }
 
 .titleFilm{
@@ -18,10 +29,160 @@
 .paramsList{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .params{
     margin-right: 10px;
     font-weight: 600;
     color: #a7a5a8;
+}
+
+.actorsList{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.ratingFilm {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background-color: #384149;
+    color: #a7a5a8;
+    padding-left: 6px;
+    padding-top: 6px;
+}
+
+.test {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background-color: #73a32f;
+    padding-left: 13px;
+    padding-top: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.ratingDescr {
+    margin-top: 24px;
+}
+
+.actors {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+}
+
+.actorImage {
+    border-radius: 12px;
+}
+
+.actor{
+    margin: 0 auto;
+    color: #a7a5a8;
+}
+
+.descrWrapper {
+    margin-top: 80px;
+}
+
+.descrFilm{
+    font-size: 16px;
+    line-height: 18px;
+    color: #a7a5a8;
+}
+
+.borderLink {
+    margin: 0 auto;
+    margin-top: 31px;
+    width: 230px;
+    height: 50px;
+    border: 1px solid #ea003d;
+    border-radius: 12px;
+    padding-left: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.6s ease
+}
+
+.borderLink:hover{
+    background-color: #ea003d;
+}
+
+.trailerLink {
+    display: block;
+    margin-top: 9px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+
+}
+
+.wrapperFilms {
+    margin-top: 45px;
+}
+
+.wrapperItems {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.subTitleFilm {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+}
+
+.film {
+    position: relative;
+    width: 153px;
+    height: 331px; /* изменить если длинные слова, то ставить после определенного количества симоволов ... */
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.film:hover{
+    transform: translateY(-10px);
+}
+
+.film p:hover {
+    color: white;
+}
+
+.linkFilm{
+    text-decoration: none;
+}
+
+.filmImage{
+    border-radius: 7px;
+}
+
+.filmTitle{
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #c1bfc8;
+}
+
+.wrapperFacts{
+
+}
+
+.titleFact{
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+}
+
+.paragrafFact{
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
 }
