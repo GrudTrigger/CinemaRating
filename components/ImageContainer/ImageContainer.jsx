@@ -1,5 +1,4 @@
 
-
 export const ImageContainer = ({image, type}) => {
     const topTen = {
         backgroundImage: `url(${image})`,

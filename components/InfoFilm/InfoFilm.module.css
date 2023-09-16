@@ -121,6 +121,10 @@
 
 }
 
+.wrapperWatch{
+    margin-top: 20px;
+}
+
 .wrapperFilms {
     margin-top: 45px;
 }
@@ -181,7 +185,12 @@
     color: white;
 }
 
+.listFacts{
+    margin-top: 20px;
+}
+
 .paragrafFact{
+    margin-bottom: 10px;
     font-size: 16px;
     font-weight: 500;
     color: white;

@@ -54,7 +54,7 @@ export default function SeriesPage() {
         if(firstDisplay) {
             const randomSeries = async () => {
                 const queryBuilder = new MovieQueryBuilder();
-                const query = queryBuilder.select(['id', 'name', 'rating', 'poster', 'year','genres.name']).filterExact('poster.url', SPECIAL_VALUE.NOT_NULL).filterExact("type", ['tv-series']).paginate(1, 21).build();
+                const query = queryBuilder.select(['id', 'name', 'rating', 'poster', 'year','genres.name', 'type']).filterExact('poster.url', SPECIAL_VALUE.NOT_NULL).filterExact("type", ['tv-series']).paginate(1, 21).build();
 
                 const {data} = await kp.movie.getByFilters(query);
                 setSeries(data)
@@ -64,7 +64,7 @@ export default function SeriesPage() {
         } else {
             const getSeries = async () => {
                 const queryBuilder = new MovieQueryBuilder();
-                const query = queryBuilder.select(['id', 'name', 'rating', 'poster', 'year', 'genres.name']).filterExact('poster.url', SPECIAL_VALUE.NOT_NULL).filterExact("type", ['tv-series']).filterRange('year', [selectYears]).filterRange('genres.name', [selectGenre]).filterRange('rating.imdb', [selectRatings, 10]).paginate(1, 21).build();
+                const query = queryBuilder.select(['id', 'name', 'rating', 'poster', 'year', 'genres.name', 'type']).filterExact('poster.url', SPECIAL_VALUE.NOT_NULL).filterExact("type", ['tv-series']).filterRange('year', [selectYears]).filterRange('genres.name', [selectGenre]).filterRange('rating.imdb', [selectRatings, 10]).paginate(1, 21).build();
 
                 const {data} = await kp.movie.getByFilters(query);
                 setSeries(data);

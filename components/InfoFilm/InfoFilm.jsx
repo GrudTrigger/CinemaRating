@@ -1,19 +1,19 @@
 import styles from './InfoFilm.module.css';
 import Image from "next/image";
-import {formatTime} from "@/components/helpers/helpers";
+import {formatSeasons, formatTime} from "@/components/helpers/helpers";
 import Link from "next/link";
 
 export const InfoFilm = ({film}) => {
-    console.log(film)
     const srcImage = film.poster.url;
     const title = film.name
     const timeFilm = formatTime(film.movieLength)
+    const allSeasons = film.seasonsInfo.length;
 
     return (
         <div className={styles.container}>
             <div className={styles.wrapperFilm}>
                 <div className={styles.poster}>
-                    <div>
+                    <div >
                         <Image className={styles.posterImage} src={srcImage} width={719} height={680} alt={'Постер'}/>
                     </div>
                 </div>
@@ -22,7 +22,7 @@ export const InfoFilm = ({film}) => {
                     <div className={styles.paramsFilm}>
                         <div className={styles.paramsList}>
                             <div className={styles.params}>{film.year}</div>
-                            <div className={styles.params}>{timeFilm}</div>
+                            <div className={styles.params}>{allSeasons !== 0 ? formatSeasons(allSeasons) : timeFilm}</div>
                             <div className={styles.params}>{film.ageRating}+</div>
                         </div>
                         <div className={styles.paramsList}>
@@ -50,7 +50,7 @@ export const InfoFilm = ({film}) => {
                         <div className={styles.descrWrapper}>
                             <p className={styles.descrFilm}>{film.description}</p>
                             <div className={styles.borderLink}>
-                                <Link className={styles.trailerLink} href={film.videos.trailers[0].url}>Смотреть трейлер</Link>
+                                {film.videos.trailers.length !== 0 ?  <Link className={styles.trailerLink} href={film.videos.trailers[0]?.url}>Смотреть трейлер</Link> : ''}
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@ export const InfoFilm = ({film}) => {
             </div>
 
             <div className={styles.wrapperFilms}>
-                <h3 className={styles.subTitleFilm}>С фильмом "{film.name}" смотрят</h3>
+                {film.similarMovies.length !== 0 ? <h3 className={styles.subTitleFilm}>С фильмом "{film.name}" смотрят</h3> : ''}
                 <div className={styles.wrapperItems}>
                     {film.similarMovies.map((f, index) => {
                         if(index < 7){
@@ -74,12 +74,15 @@ export const InfoFilm = ({film}) => {
             </div>
 
             <div className={styles.wrapperFacts}>
-                <h3 className={styles.titleFact}>Знаете ли вы, что</h3>
-                {film.facts.map((fact, index) => {
-                    return <p className={styles.paragrafFact} key={index}>{fact.value}</p>
-                })}
+                {film.facts.length !== 0 ? <h3 className={styles.titleFact}>Знаете ли вы, что</h3> : '' }
+                <ul className={styles.listFacts}>
+                    {film.facts.map((fact, index) => {
+                        if(index < 7){
+                            return <li className={styles.paragrafFact} key={index}>{fact.value.replace(/<[^>]*>/g, '')}</li>
+                        }
+                    })}
+                </ul>
             </div>
-
         </div>
     )
 }

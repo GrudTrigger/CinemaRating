@@ -1,5 +1,5 @@
 'use client'
-import { TestSlider, Topten } from "@/components";
+import {FilmsTitle, TestSlider, Topten} from "@/components";
 import {KinopoiskDev, MovieQueryBuilder, SORT_TYPE, SPECIAL_VALUE} from "@openmoviedb/kinopoiskdev_client";
 import {useState, useEffect} from "react";
 
@@ -14,7 +14,7 @@ export default function Home() {
         const getRelatedByQueryBuilderMovies  = async () => {
             const queryBuilder = new MovieQueryBuilder();
 
-            const query = queryBuilder.select(['id','name','rating', 'poster', 'year']).filterRange('year', [2020,2023]).filterRange('rating.kp',[7.5, 10]).paginate(1,3).build();
+            const query = queryBuilder.select(['id','name','rating', 'poster', 'year', 'type']).filterRange('year', [2023]).filterRange('rating.kp',[7.5, 10]).paginate(1,20).build();
             const {data} = await kp.movie.getByFilters(query);
             setMainSlider(data)
         }
@@ -43,6 +43,7 @@ export default function Home() {
     return (
     <>
         {mainSlider && <TestSlider data={mainSlider}/>}
+        <FilmsTitle type={'main'} />
         {topTenFilms && <Topten topTenFilms={topTenFilms} type={"films"}/>}
         {topTenSeries && <Topten topTenFilms={topTenSeries} type={"series"}/>}
     </>

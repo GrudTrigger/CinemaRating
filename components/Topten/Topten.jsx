@@ -16,6 +16,7 @@ export const Topten = ({topTenFilms, type}) => {
     slidesToShow: 4,
     slidesToScroll: 5,
     initialSlide: 0,
+    arrows: false,
   };
 
   const films = topTenFilms.docs;
@@ -33,7 +34,7 @@ export const Topten = ({topTenFilms, type}) => {
                 <div className={styles.item}>
                  <ImageContainer image={film.poster.url} type={'topTen'}/>
                   <div className={styles.wrapperDescr}>
-                    <Image src={`/number/number${index + 1}.svg`} width={48} height={66} alt={'numbers'}/>
+                      <Image src={`/number/number${index + 1}.svg`} width={48} height={66} alt={'numbers'}/>
                   </div>
                 </div>
               </div>

@@ -1,3 +1,4 @@
+
 .customSlider {
     margin: 15px auto;
     overflow: hidden;
@@ -5,28 +6,10 @@
     z-index: 1;
     width: 100%;
 }
-
 .customSlide {
     margin-right: 24px;
 }
-.sliderImage {
-    background-size: cover;
-    background-position: center;
-}
-.sliderButton {
-    position: absolute;
-    bottom: 50px;
-    width: 201px;
-    height:40px;
-    border-radius: 8px;
-    border-width: 1px;
-    padding: 3px 6px;
-    background-color: #ea003d;
-    color: white;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 500;
-}
-.sliderButton:hover {
-    background-color: #ce053a;
+
+.image {
+    border-radius: 7px;
 }
