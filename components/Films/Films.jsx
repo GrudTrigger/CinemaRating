@@ -2,9 +2,9 @@ import styles from './Films.module.css';
 import Image from "next/image";
 import Link from "next/link";
 
-export const Films = ({films}) => {
+export const Films = ({films,handleShowMore}) => {
     const currentArrayFilms= films.docs;
-    console.log(currentArrayFilms);
+    console.log(currentArrayFilms)
     return (
         <div className={styles.container}>
             <div className={styles.wrapperFilms}>
@@ -29,6 +29,9 @@ export const Films = ({films}) => {
                         )
                     }
                 })}
+            </div>
+            <div style={{margin: '0 auto', width:'120px'}}>
+                <button className={styles.button} onClick={handleShowMore}>Загрузить еще</button>
             </div>
         </div>
     )

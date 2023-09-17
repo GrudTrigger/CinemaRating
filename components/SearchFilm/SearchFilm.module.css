@@ -1,0 +1,26 @@
+.wrapperSearch{
+    position: absolute;
+    right: 15.5%;
+    top: 90%;
+    z-index: 10;
+    list-style-type: none;
+}
+
+.wrapperFilm {
+    width: 285px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border: 1px solid white;
+    background-color: #100e19;
+}
+
+.linkFilm {
+    text-decoration: none;
+}
+
+
+.title {
+    margin-left: 20px;
+    color: white;
+}

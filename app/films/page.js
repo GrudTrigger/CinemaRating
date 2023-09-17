@@ -15,7 +15,7 @@ export default function FilmsPage() {
     const [selectYears, setSelectYears] = useState('2023');
     const [selectRatings, setSelectRatings] = useState('');
     const [buttonPress, setButtonPress] = useState(false);
-
+    const [currentPage, setCurrentPage] = useState(1);
     //TODO: изменить название функции || Сделать начальный показ фильмов, если стейт фильтров пустой, сделать вывод некого кино по умолчанию. При сбросе фильтра, так же должны показываться фильмы
     const handleYearSelect  = (event, typeSelect) => {
         switch (typeSelect) {
@@ -44,6 +44,11 @@ export default function FilmsPage() {
         setFirstDisplay(true)
     }
 
+    const handleShowMore = () => {
+        setCurrentPage(prevPage => prevPage + 1)
+    }
+
+
     useEffect(() => {
         if (firstDisplay) {
             const randomFilms = async () => {
@@ -60,17 +65,17 @@ export default function FilmsPage() {
                 const query = queryBuilder.select(['id', 'name', 'rating', 'poster', 'year', 'genres.name', 'type']).filterExact('poster.url', SPECIAL_VALUE.NOT_NULL).filterExact("type", ['movie']).filterRange('year', [selectYears]).filterRange('genres.name', [selectGenre]).filterRange('rating.imdb', [selectRatings, 10]).paginate(1, 21).build();
 
                 const {data} = await kp.movie.getByFilters(query);
-                setFilms(data);
+                setFilms(prevFilms => (prevFilms ? [...prevFilms, ...data] : data));
             }
             getFilms();
         }
     }, [selectYears,selectGenre,selectRatings,buttonPress, firstDisplay]);
-
+    //TODO : Сделать загрузку еще фильмов по кнопке, надо обновлять массив филмс
     return(
         <>
             <FilmsTitle type={type}/>
             <FilterFilms handleYearSelect={handleYearSelect} handleResetButton={handleResetButton}/>
-            {films && <Films films = {films}/>}
+            {films && <Films films = {films} handleShowMore={handleShowMore}/>}
         </>
     )
 }

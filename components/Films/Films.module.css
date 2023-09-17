@@ -43,3 +43,18 @@
     line-height: 20px;
     color: #c1bfc8;
 }
+
+.button {
+    width: 120px;
+    border-radius: 8px;
+    border-width: 1px;
+    height: 35px;
+    padding: 3px 6px;
+    background-color: #ea003d;
+    color: white;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: #ce053a;
+}
