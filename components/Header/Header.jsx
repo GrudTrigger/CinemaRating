@@ -13,7 +13,7 @@ import { SearchFilm } from "@/components/SearchFilm/SearchFilm";
 
 export const Header = () => {
   const kp = new KinopoiskDev("EBZZ6S8-AQ346N3-H1PCJ82-9SAZ5MY");
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState("");
   const [searchFilm, setSearchFilm] = useState();
   const [isSearchFilmOpen, setIsSearchFilmOpen] = useState(false);
 
@@ -26,27 +26,32 @@ export const Header = () => {
   // };
 
   useEffect(() => {
-    const getMovieByTitle = async () => {
-      const queryBuilder = new MovieQueryBuilder();
-      const query = queryBuilder
-        .select([
-          "id",
-          "name",
-          "rating",
-          "poster",
-          "year",
-          "genres.name",
-          "type",
-        ])
-        .filterExact("poster.url", SPECIAL_VALUE.NOT_NULL)
-        .filterExact("name", search)
-        .paginate(1, 4)
-        .build();
-      const { data, error, message } = await kp.movie.getByFilters(query);
-      setSearchFilm(data);
+    const debounceSearch = setTimeout(() => {
+      const getMovieByTitle = async () => {
+        const queryBuilder = new MovieQueryBuilder();
+        const query = queryBuilder
+          .select([
+            "id",
+            "name",
+            "rating",
+            "poster",
+            "year",
+            "genres.name",
+            "type",
+          ])
+          .filterExact("poster.url", SPECIAL_VALUE.NOT_NULL)
+          .filterExact("name", search)
+          .paginate(1, 4)
+          .build();
+        const { data, error, message } = await kp.movie.getByFilters(query);
+        setSearchFilm(data);
+      };
+      getMovieByTitle();
+    }, 500);
+    return () => {
+      clearTimeout(debounceSearch);
     };
-    getMovieByTitle();
-  }, [kp.movie, search]);
+  }, [search]);
 
   console.log(search);
   console.log(searchFilm);
