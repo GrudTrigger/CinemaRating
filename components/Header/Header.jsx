@@ -17,44 +17,57 @@ export const Header = () => {
   const [searchFilm, setSearchFilm] = useState();
   const [isSearchFilmOpen, setIsSearchFilmOpen] = useState(false);
 
+  const input = document.querySelector("#searchInput");
+  const listFilms = document.querySelector("#listFilms");
+
   const handleSearch = (event) => {
     setSearch(event.target.value);
   };
 
-  // const closeAndOpenSearchFilm = () => {
-  //   setIsSearchFilmOpen((prevState) => !prevState);
-  // };
+  const closeAndOpenSearchFilm = () => {
+    setIsSearchFilmOpen((prevState) => !prevState);
+  };
 
   useEffect(() => {
-    const debounceSearch = setTimeout(() => {
-      const getMovieByTitle = async () => {
-        const queryBuilder = new MovieQueryBuilder();
-        const query = queryBuilder
-          .select([
-            "id",
-            "name",
-            "rating",
-            "poster",
-            "year",
-            "genres.name",
-            "type",
-          ])
-          .filterExact("poster.url", SPECIAL_VALUE.NOT_NULL)
-          .filterExact("name", search)
-          .paginate(1, 4)
-          .build();
-        const { data, error, message } = await kp.movie.getByFilters(query);
-        setSearchFilm(data);
-      };
-      getMovieByTitle();
-    }, 500);
-    return () => {
-      clearTimeout(debounceSearch);
+    const getMovieByTitle = async () => {
+      const queryBuilder = new MovieQueryBuilder();
+      const query = queryBuilder
+        .select([
+          "id",
+          "name",
+          "rating",
+          "poster",
+          "year",
+          "genres.name",
+          "type",
+        ])
+        .filterExact("poster.url", SPECIAL_VALUE.NOT_NULL)
+        .filterExact("name", search)
+        .paginate(1, 4)
+        .build();
+      const { data, error, message } = await kp.movie.getByFilters(query);
+      setSearchFilm(data);
     };
+    getMovieByTitle();
   }, [search]);
 
-  console.log(search);
-  console.log(searchFilm);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        searchFilm &&
+        event.target !== input &&
+        event.target.parentNode !== listFilms
+      ) {
+        setIsSearchFilmOpen(false);
+        setSearch("");
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [searchFilm]);
 
   return (
     <header>
@@ -88,6 +101,8 @@ export const Header = () => {
             type="text"
             placeholder="Поиск..."
             value={search}
+            onClick={closeAndOpenSearchFilm}
+            id="searchInput"
           />
           <div className={styles.wrapperButtons}>
             <button className={styles.buttonHeader}>Войти</button>
