@@ -6,7 +6,7 @@ import {
   SPECIAL_VALUE,
 } from "@openmoviedb/kinopoiskdev_client";
 import { useEffect, useState } from "react";
-import { InfoFilm } from "@/components";
+import { InfoFilm } from "../../../components";
 
 export default function SeriesIdPage({ params }) {
   const kp = new KinopoiskDev(process.env.NEXT_PUBLIC_API_KEY);

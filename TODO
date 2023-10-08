@@ -1,0 +1,12 @@
+В InfoFilm и Films сделать отедльный комопнент под код :
+    return <div key={index} className={styles.film}>
+        <Link className={styles.linkFilm} href={`/films/${f.id}`}>
+            <Image className={styles.filmImage} src={f.poster.url} alt={f.name} width={153} height={235}/>
+            <p className={styles.filmTitle}>{f.name}</p>
+        </Link>
+    </div>
+Повторяется и там и там, вынести.
+
+_______________________________________________________
+
+Исправить Image на див с backround-image в InfoFilm и Slider. Чтобы было коррекное отображение

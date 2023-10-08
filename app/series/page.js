@@ -1,5 +1,5 @@
 "use client";
-import { Films, FilmsTitle, FilterFilms } from "@/components";
+import { Films, FilmsTitle, FilterFilms } from "../../components";
 import {
   KinopoiskDev,
   MovieQueryBuilder,

@@ -1,5 +1,6 @@
 "use client";
-import { FilmsTitle, TestSlider, Topten } from "@/components";
+import { FilmsTitle, MainSlider, Topten } from "../components/index";
+import { hoursInDay } from "../components/helpers/helpers";
 import {
   KinopoiskDev,
   MovieQueryBuilder,
@@ -57,11 +58,17 @@ export default function Home() {
     getRelatedByQueryBuilderMovies();
     getTopTenFilms();
     getTopTenSeries();
+
+    const interval = setInterval(() => {
+      getRelatedByQueryBuilderMovies();
+    }, hoursInDay);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <>
-      {mainSlider && <TestSlider data={mainSlider} />}
+      {mainSlider && <MainSlider data={mainSlider} />}
       <FilmsTitle type={"main"} />
       {topTenFilms && <Topten topTenFilms={topTenFilms} type={"films"} />}
       {topTenSeries && <Topten topTenFilms={topTenSeries} type={"series"} />}
