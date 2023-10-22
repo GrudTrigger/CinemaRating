@@ -19,7 +19,7 @@ export default function FilmsPage() {
   const [selectYears, setSelectYears] = useState("2023");
   const [selectRatings, setSelectRatings] = useState("");
   const [buttonPress, setButtonPress] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   //TODO: изменить название функции || Сделать начальный показ фильмов, если стейт фильтров пустой, сделать вывод некого кино по умолчанию. При сбросе фильтра, так же должны показываться фильмы
   const handleYearSelect = (event, typeSelect) => {
     switch (typeSelect) {
@@ -47,9 +47,10 @@ export default function FilmsPage() {
     setFirstDisplay(true);
   };
 
-  const handleShowMore = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
-  };
+  // const handleShowMore = () => {
+  //   setCurrentPage((prevPage) => prevPage + 7);
+  // };
+
 
   useEffect(() => {
     if (firstDisplay) {
@@ -78,7 +79,7 @@ export default function FilmsPage() {
       const getFilms = async () => {
         const queryBuilder = new MovieQueryBuilder();
         const query = queryBuilder
-          .select([
+          .selectField([
             "id",
             "name",
             "rating",
@@ -92,7 +93,7 @@ export default function FilmsPage() {
           .filterRange("year", [selectYears])
           .filterRange("genres.name", [selectGenre])
           .filterRange("rating.imdb", [selectRatings, 10])
-          .paginate(1, 21)
+          .paginate(1, 21 + currentPage)
           .build();
 
         const { data } = await kp.movie.getByFilters(query);
@@ -101,15 +102,14 @@ export default function FilmsPage() {
       getFilms();
     }
   }, [selectYears, selectGenre, selectRatings, buttonPress, firstDisplay]);
-  //TODO : Сделать загрузку еще фильмов по кнопке, надо обновлять массив филмс
   return (
-    <>
+    <div style={{flexGrow: '1'}}>
       <FilmsTitle type={type} />
       <FilterFilms
         handleYearSelect={handleYearSelect}
         handleResetButton={handleResetButton}
       />
-      {films && <Films films={films} handleShowMore={handleShowMore} />}
-    </>
+      {films && <Films films={films}/>}
+    </div>
   );
 }

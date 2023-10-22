@@ -8,6 +8,8 @@ import {
   SPECIAL_VALUE,
 } from "@openmoviedb/kinopoiskdev_client";
 import { useState, useEffect } from "react";
+import ReactLoading from "react-loading";
+
 
 export default function Home() {
   const kp = new KinopoiskDev(process.env.NEXT_PUBLIC_API_KEY);
@@ -18,7 +20,6 @@ export default function Home() {
   useEffect(() => {
     const getRelatedByQueryBuilderMovies = async () => {
       const queryBuilder = new MovieQueryBuilder();
-
       const query = queryBuilder
         .select(["id", "name", "rating", "poster", "year", "type"])
         .filterRange("year", [2023])

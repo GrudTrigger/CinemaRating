@@ -4,14 +4,14 @@
   margin: 0;
 }
 
-html,
+html {
+  height: 100%;
+}
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  height: 100%;
   background:#100e19 ;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 img:focus {
@@ -24,6 +24,9 @@ img:focus {
   height: 500px;
 }
 
-.cl-internal-phfxlr {
-
+.loading-ring {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
