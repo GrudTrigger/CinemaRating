@@ -34,6 +34,6 @@ CLERK_STANDALONE_SIGN_IN_URL=
 CLERK_STANDALONE_SIGN_UP_URL=
 
 
-5. Используемые технологии
+## Используемые технологии
  - Next.js
  - Clerk.js
