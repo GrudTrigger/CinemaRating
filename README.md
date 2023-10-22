@@ -1,37 +1,34 @@
-## О приложении
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Особенности приложения:
-- Просмотр списка фильмов и сериалов.
-- Просмотр топ-10 фильмов за все время.
-- Просмотр топ-10 сериалов.
-- Поиск фильмов и сериалов по названию.
-- Регистрация и аутентификация пользователей через Clerk.js.
+## Getting Started
 
-## Установка и запуск
+First, run the development server:
 
-1. Склонируйте репозиторий на свой локальный компьютер:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-   ```bash
-   git clone https://github.com/your-username/crm-psi-jade.git
-2. Установите зависимости:
-   
-   ```bash
-   npm install
-3. Запустите проект:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-   ```bash
-   npm start
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Создайте файл .env.local и настройте переменные окружения, необходимые для Clerk.js
-NEXT_PUBLIC_CLERK_FRONTEND_API=<br>
-CLERK_FRONTEND_API=<br>
-CLERK_PUBLIC_API_KEY=<br>
-CLERK_STANDALONE_SIGN_IN_URL=<br>
-CLERK_STANDALONE_SIGN_UP_URL=<br>
+## Learn More
 
-## Используемые технологии
- - Next.js
- - Clerk.js
+To learn more about Next.js, take a look at the following resources:
 
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
