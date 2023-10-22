@@ -13,27 +13,29 @@
 
 ## Установка и запуск
 
-1. Убедитесь, что у вас установлен Node.js и npm.
+1. Склонируйте репозиторий на свой локальный компьютер:
 
-2. Склонируйте репозиторий:
+   ```bash
+   git clone https://github.com/your-username/crm-psi-jade.git
+2. Установите зависимости:
+   
+   ```bash
+   npm install
+3. Запустите проект:
 
-```bash
-git clone https://github.com/ваш-пользователь/ваш-репозиторий.git
-cd ваш-репозиторий
+   ```bash
+   npm start
 
-3. Установка зависимотей:
 
-```bash
-npm install
-
-4. Создайте файл .env.local и настройте переменные окружения, необходимые для Clerk.js
+## Создайте файл .env.local и настройте переменные окружения, необходимые для Clerk.js
 NEXT_PUBLIC_CLERK_FRONTEND_API=
 CLERK_FRONTEND_API=
 CLERK_PUBLIC_API_KEY=
 CLERK_STANDALONE_SIGN_IN_URL=
 CLERK_STANDALONE_SIGN_UP_URL=
 
-
 ## Используемые технологии
  - Next.js
  - Clerk.js
+
+
