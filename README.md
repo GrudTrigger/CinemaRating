@@ -29,11 +29,11 @@ npm install
 4. Создайте файл .env.local и настройте переменные окружения, необходимые для Clerk.js
 NEXT_PUBLIC_CLERK_FRONTEND_API=
 CLERK_FRONTEND_API=
-CLERK_PUBLIC_API_KEY=<br>
+CLERK_PUBLIC_API_KEY=
 CLERK_STANDALONE_SIGN_IN_URL=
 CLERK_STANDALONE_SIGN_UP_URL=
 
 
 5. Используемые технологии
- - Next.js<br>
+ - Next.js
  - Clerk.js
