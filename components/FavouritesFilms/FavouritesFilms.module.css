@@ -1,0 +1,73 @@
+.container {
+    padding-top: 10px;
+    width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1;
+}
+.title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 44px;
+    color: #ffffff;
+    margin-top: 40px;
+}
+.wrapperFilms{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    max-width: 1240px;
+    margin-top: 70px;
+}
+
+.film {
+    position: relative;
+    width: 153px;
+    height: 331px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.film .closeIcon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+}
+
+.film:hover .closeIcon {
+    opacity: 1;
+}
+.film:hover{
+    transform: translateY(-10px);
+}
+
+.film p:hover {
+    color: white;
+}
+
+.linkFilm{
+    text-decoration: none;
+}
+
+.filmImage{
+    border-radius: 7px;
+}
+
+.filmTitle{
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #c1bfc8;
+}

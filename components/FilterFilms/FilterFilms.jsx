@@ -1,8 +1,8 @@
 "use client";
 import styles from "./FilterFilms.module.css";
-import { genres } from "@/components/helpers/helpers";
-import { years } from "@/components/helpers/helpers";
-import { ratings } from "@/components/helpers/helpers";
+import { genres } from "../helpers/helpers";
+import { years } from "../helpers/helpers";
+import { ratings } from "../helpers/helpers";
 import Image from "next/image";
 
 export const FilterFilms = ({ handleYearSelect, handleResetButton }) => {

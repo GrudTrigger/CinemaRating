@@ -1,13 +1,53 @@
+"use client";
 import styles from "./InfoFilm.module.css";
 import Image from "next/image";
-import { formatSeasons, formatTime } from "@/components/helpers/helpers";
+import { formatSeasons, formatTime } from "../helpers/helpers";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useAuth } from "@clerk/nextjs";
 
 export const InfoFilm = ({ film }) => {
+  const [userFilms, setUserFilms] = useState([]);
+  const { userId } = useAuth();
   const srcImage = film.poster.url;
   const title = film.name;
+  const filmId = film.id;
   const timeFilm = formatTime(film.movieLength);
   const allSeasons = film.seasonsInfo.length;
+
+  const [isFavorite, setIsFavorite] = useState(false);
+  console.log(film);
+  useEffect(() => {
+    const getFavoutiresFilmsUsers = () => {
+      fetch(`https://six-conscious-fork.glitch.me/favorites?userID=${userId}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then((data) => setUserFilms(data));
+    };
+
+    getFavoutiresFilmsUsers();
+  }, []);
+
+  const isFavouriteFilm = userFilms.find((el) => el.filmId === film.id);
+
+  const addToFavorites = () => {
+    const favFilms = {
+      userId,
+      filmId,
+      title,
+      srcImage,
+    };
+    fetch("https://six-conscious-fork.glitch.me/favorites", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(favFilms),
+    }).then(() => {
+      console.log("Add fav films");
+    });
+    setIsFavorite(true);
+  };
 
   return (
     <div className={styles.container}>
@@ -69,27 +109,36 @@ export const InfoFilm = ({ film }) => {
             </div>
             <div className={styles.descrWrapper}>
               <p className={styles.descrFilm}>{film.description}</p>
-              <div className={styles.borderLink}>
-                {film.videos.trailers.length !== undefined ? (
+              {film.videos.trailers.length !== 0 ? (
+                <div className={styles.borderLink}>
                   <Link
                     className={styles.trailerLink}
                     href={film.videos.trailers[0]?.url}
                   >
                     Смотреть трейлер
                   </Link>
-                ) : (
-                  ""
-                )}
-              </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
       </div>
-
+      <div className={styles.wpapperFavBtn}>
+        {!isFavouriteFilm && !isFavorite ? (
+          <button className={styles.favBtn} onClick={addToFavorites}>
+            Добавить в избранное
+          </button>
+        ) : (
+          <div className={styles.favDiv}>В избранном</div>
+        )}
+      </div>
       <div className={styles.wrapperFilms}>
         {film.similarMovies.length !== 0 ? (
           <h3 className={styles.subTitleFilm}>
-            С фильмом "{film.name}" смотрят
+            {/* eslint-disable-next-line react/no-unescaped-entities */}С
+            фильмом "{film.name}" смотрят
           </h3>
         ) : (
           ""

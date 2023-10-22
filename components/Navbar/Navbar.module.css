@@ -1,0 +1,21 @@
+.ulList{
+    list-style: none;
+}
+
+.liItem {
+    display: inline-block;
+    margin-right: 5px;
+    margin-right: 10px;
+}
+
+
+
+.link {
+    text-decoration: none;
+    color: #4a4951;
+    transition: all 0.2s ;
+}
+
+.link:hover {
+    color: #fff;
+}

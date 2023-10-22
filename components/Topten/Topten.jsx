@@ -4,8 +4,9 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { ImageContainer } from "@/components/ImageContainer/ImageContainer";
+import { ImageContainer } from "../ImageContainer/ImageContainer";
 import React from "react";
+import Link from "next/link";
 
 export const Topten = ({ topTenFilms, type }) => {
   const settings = {
@@ -33,7 +34,15 @@ export const Topten = ({ topTenFilms, type }) => {
           return (
             <div key={film.id} className={styles.wrapperItems}>
               <div className={styles.item}>
-                <ImageContainer image={film.poster.url} type={"topTen"} />
+                {type === "films" ? (
+                  <Link href={`/films/${film.id}`}>
+                    <ImageContainer image={film.poster.url} type={"topTen"} />
+                  </Link>
+                ) : (
+                  <Link href={`/series/${film.id}`}>
+                    <ImageContainer image={film.poster.url} type={"topTen"} />
+                  </Link>
+                )}
                 <div className={styles.wrapperDescr}>
                   <Image
                     src={`/number/number${index + 1}.svg`}

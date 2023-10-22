@@ -1,6 +1,5 @@
 "use client";
 import styles from "./Header.module.css";
-import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import {
@@ -9,16 +8,27 @@ import {
   SORT_TYPE,
   SPECIAL_VALUE,
 } from "@openmoviedb/kinopoiskdev_client";
-import { SearchFilm } from "@/components/SearchFilm/SearchFilm";
+
+import { Navbar } from "../Navbar/Navbar";
+import {
+  SignInButton,
+  UserButton,
+  useAuth,
+  SignOutButton,
+} from "@clerk/nextjs";
+import { SearchFilm } from "../SearchFilm/SearchFilm";
 
 export const Header = () => {
-  const kp = new KinopoiskDev("EBZZ6S8-AQ346N3-H1PCJ82-9SAZ5MY");
+  const kp = new KinopoiskDev(process.env.NEXT_PUBLIC_API_KEY);
   const [search, setSearch] = useState("");
   const [searchFilm, setSearchFilm] = useState();
   const [isSearchFilmOpen, setIsSearchFilmOpen] = useState(false);
 
   const input = document.querySelector("#searchInput");
   const listFilms = document.querySelector("#listFilms");
+
+  const { isLoaded, userId, sessionId, getToken } = useAuth();
+  console.log(isLoaded, userId, sessionId);
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
@@ -76,23 +86,7 @@ export const Header = () => {
           <div>
             <Image src={"/logo.png"} alt={"logo"} width={55} height={55} />
           </div>
-          <ul className={styles.ulList}>
-            <li className={styles.liItem}>
-              <Link className={styles.link} href={"/"}>
-                Что нового
-              </Link>
-            </li>
-            <li className={styles.liItem}>
-              <Link className={styles.link} href={"/films"}>
-                Фильмы
-              </Link>
-            </li>
-            <li className={styles.liItem}>
-              <Link className={styles.link} href={"/series"}>
-                Сериалы
-              </Link>
-            </li>
-          </ul>
+          <Navbar userId={userId} />
         </nav>
         <div className={styles.wrapperSerch}>
           <input
@@ -105,7 +99,14 @@ export const Header = () => {
             id="searchInput"
           />
           <div className={styles.wrapperButtons}>
-            <button className={styles.buttonHeader}>Войти</button>
+            {userId === null ? (
+              <SignInButton mode="modal">
+                <button className={styles.authButton}>Войти</button>
+              </SignInButton>
+            ) : (
+              ""
+            )}
+            <UserButton afterSignOutUrl="/" />
           </div>
         </div>
         {isSearchFilmOpen && searchFilm && (

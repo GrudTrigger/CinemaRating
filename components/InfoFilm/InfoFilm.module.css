@@ -121,6 +121,39 @@
 
 }
 
+.wpapperFavBtn{
+    margin-top: 30px;
+    margin-left: 290px;
+}
+
+.favBtn {
+    width: 200px;
+    border-radius: 8px;
+    border-width: 1px;
+    height: 40px;
+    padding: 3px 6px;
+    background-color: #ea003d;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.favDiv {
+    width: 200px;
+    height: 40px;
+    color: white;
+    padding: 11px 6px;
+    background-color: #73a32f;
+    font-size: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.favBtn:hover{
+    background-color: #ce053a;
+}
+
 .wrapperWatch{
     margin-top: 20px;
 }
@@ -133,7 +166,7 @@
     margin-top: 15px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .subTitleFilm {

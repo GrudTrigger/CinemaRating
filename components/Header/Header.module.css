@@ -6,6 +6,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    height: 60px;
 }
 
 .navMenu {
@@ -19,27 +20,7 @@
 
 }
 
-.ulList{
-    list-style: none;
-}
 
-.liItem {
-    display: inline-block;
-    margin-right: 5px;
-    margin-right: 10px;
-}
-
-
-
-.link {
-    text-decoration: none;
-    color: #4a4951;
-    transition: all 0.2s ;
-}
-
-.link:hover {
-    color: #fff;
-}
 
 .wrapperSerch{
     display: flex;
@@ -67,7 +48,7 @@
     align-items: center;
 }
 
-.buttonHeader {
+.authButton {
     width: 70px;
     border-radius: 8px;
     border-width: 1px;
@@ -77,6 +58,7 @@
     color: white;
     cursor: pointer;
 }
-.buttonHeader:hover {
+
+.authButton:hover{
     background-color: #ce053a;
 }

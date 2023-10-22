@@ -7,3 +7,5 @@ export * from "./FilterFilms/FilterFilms";
 export * from "./Films/Films";
 export * from "./InfoFilm/InfoFilm";
 export * from "./SearchFilm/SearchFilm";
+export * from "./Navbar/Navbar";
+export * from "./FavouritesFilms/FavouritesFilms";
