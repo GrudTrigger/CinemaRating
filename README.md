@@ -28,11 +28,11 @@
 
 
 ## Создайте файл .env.local и настройте переменные окружения, необходимые для Clerk.js
-NEXT_PUBLIC_CLERK_FRONTEND_API=
-CLERK_FRONTEND_API=
-CLERK_PUBLIC_API_KEY=
-CLERK_STANDALONE_SIGN_IN_URL=
-CLERK_STANDALONE_SIGN_UP_URL=
+NEXT_PUBLIC_CLERK_FRONTEND_API=<br>
+CLERK_FRONTEND_API=<br>
+CLERK_PUBLIC_API_KEY=<br>
+CLERK_STANDALONE_SIGN_IN_URL=<br>
+CLERK_STANDALONE_SIGN_UP_URL=<br>
 
 ## Используемые технологии
  - Next.js
