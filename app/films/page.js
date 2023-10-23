@@ -6,6 +6,7 @@ import {
   SORT_TYPE,
   SPECIAL_VALUE,
 } from "@openmoviedb/kinopoiskdev_client";
+import ReactLoading from "react-loading";
 import { useEffect, useState } from "react";
 
 export default function FilmsPage() {
@@ -13,14 +14,15 @@ export default function FilmsPage() {
   const type = "films";
   const [films, setFilms] = useState(null);
   const [firstDisplay, setFirstDisplay] = useState(true);
-  //TODO: сделать рандомное подставление жанра и даты при первой отрисовки и сбросе фильта
-  //FILTER
+
   const [selectGenre, setSelectGenre] = useState("драма");
   const [selectYears, setSelectYears] = useState("2023");
   const [selectRatings, setSelectRatings] = useState("");
   const [buttonPress, setButtonPress] = useState(false);
-  const [currentPage, setCurrentPage] = useState(0);
-  //TODO: изменить название функции || Сделать начальный показ фильмов, если стейт фильтров пустой, сделать вывод некого кино по умолчанию. При сбросе фильтра, так же должны показываться фильмы
+
+  const [isLoading, setIsLoading] = useState()
+
+
   const handleYearSelect = (event, typeSelect) => {
     switch (typeSelect) {
       case "genre":
@@ -47,14 +49,10 @@ export default function FilmsPage() {
     setFirstDisplay(true);
   };
 
-  // const handleShowMore = () => {
-  //   setCurrentPage((prevPage) => prevPage + 7);
-  // };
-
-
   useEffect(() => {
     if (firstDisplay) {
       const randomFilms = async () => {
+        setIsLoading(false)
         const queryBuilder = new MovieQueryBuilder();
         const query = queryBuilder
           .select([
@@ -72,11 +70,13 @@ export default function FilmsPage() {
           .build();
 
         const { data } = await kp.movie.getByFilters(query);
+        setIsLoading(true)
         setFilms(data);
       };
       randomFilms();
     } else {
       const getFilms = async () => {
+        setIsLoading(false)
         const queryBuilder = new MovieQueryBuilder();
         const query = queryBuilder
           .selectField([
@@ -93,10 +93,11 @@ export default function FilmsPage() {
           .filterRange("year", [selectYears])
           .filterRange("genres.name", [selectGenre])
           .filterRange("rating.imdb", [selectRatings, 10])
-          .paginate(1, 21 + currentPage)
+          .paginate(1, 21)
           .build();
 
         const { data } = await kp.movie.getByFilters(query);
+        setIsLoading(true)
         setFilms((prevFilms) => (prevFilms ? [...prevFilms, ...data] : data));
       };
       getFilms();
@@ -109,7 +110,15 @@ export default function FilmsPage() {
         handleYearSelect={handleYearSelect}
         handleResetButton={handleResetButton}
       />
-      {films && <Films films={films}/>}
+      {!isLoading ? (
+        <ReactLoading
+          type={"spinningBubbles"}
+          color={"#ea003d"}
+          height={"5%"}
+          width={"5%"}
+          className="loading-ring"
+        />
+      ) : films && <Films films={films}/>}
     </div>
   );
 }

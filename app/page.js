@@ -17,8 +17,11 @@ export default function Home() {
   const [topTenFilms, setTopTenFilms] = useState(null);
   const [topTenSeries, setTopTenSeries] = useState(null);
 
+  const [isLoading, setIsLoading] = useState();
+
   useEffect(() => {
     const getRelatedByQueryBuilderMovies = async () => {
+      setIsLoading(false)
       const queryBuilder = new MovieQueryBuilder();
       const query = queryBuilder
         .select(["id", "name", "rating", "poster", "year", "type"])
@@ -27,6 +30,7 @@ export default function Home() {
         .paginate(1, 20)
         .build();
       const { data } = await kp.movie.getByFilters(query);
+      setIsLoading(true)
       setMainSlider(data);
     };
 
@@ -69,7 +73,13 @@ export default function Home() {
 
   return (
     <>
-      {mainSlider && <MainSlider data={mainSlider} />}
+      {!isLoading ? (<ReactLoading
+          type={"spinningBubbles"}
+          color={"#ea003d"}
+          height={"5%"}
+          width={"5%"}
+          className="loading-ring"
+        />) : mainSlider && <MainSlider data={mainSlider} />}
       <FilmsTitle type={"main"} />
       {topTenFilms && <Topten topTenFilms={topTenFilms} type={"films"} />}
       {topTenSeries && <Topten topTenFilms={topTenSeries} type={"series"} />}

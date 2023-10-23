@@ -8,20 +8,22 @@ import {
   SPECIAL_VALUE,
 } from "@openmoviedb/kinopoiskdev_client";
 import { useEffect, useState } from "react";
+import ReactLoading from "react-loading";
 
 export default function SeriesPage() {
-  //TODO: вынести kp в файл helpers
   const kp = new KinopoiskDev(process.env.NEXT_PUBLIC_API_KEY);
   const type = "series";
 
   const [series, setSeries] = useState(null);
   const [firstDisplay, setFirstDisplay] = useState(true);
 
-  //FILTER
+
   const [selectGenre, setSelectGenre] = useState("драма");
   const [selectYears, setSelectYears] = useState("2023");
   const [selectRatings, setSelectRatings] = useState("");
   const [buttonPress, setButtonPress] = useState(false);
+
+  const [isLoading, setIsLoading] = useState();
 
   const handleYearSelect = (event, typeSelect) => {
     switch (typeSelect) {
@@ -51,6 +53,7 @@ export default function SeriesPage() {
   useEffect(() => {
     if (firstDisplay) {
       const randomSeries = async () => {
+        setIsLoading(false)
         const queryBuilder = new MovieQueryBuilder();
         const query = queryBuilder
           .select([
@@ -68,12 +71,14 @@ export default function SeriesPage() {
           .build();
 
         const { data } = await kp.movie.getByFilters(query);
+        setIsLoading(true)
         setSeries(data);
       };
 
       randomSeries();
     } else {
       const getSeries = async () => {
+        setIsLoading(false)
         const queryBuilder = new MovieQueryBuilder();
         const query = queryBuilder
           .select([
@@ -94,6 +99,7 @@ export default function SeriesPage() {
           .build();
 
         const { data } = await kp.movie.getByFilters(query);
+        setIsLoading(true)
         setSeries(data);
       };
       getSeries();
@@ -107,7 +113,13 @@ export default function SeriesPage() {
         handleYearSelect={handleYearSelect}
         handleResetButton={handleResetButton}
       />
-      {series && <Films films={series} />}
+      {!isLoading ? (<ReactLoading
+          type={"spinningBubbles"}
+          color={"#ea003d"}
+          height={"5%"}
+          width={"5%"}
+          className="loading-ring"
+        />) : series && <Films films={series} />}
     </>
   );
 }
